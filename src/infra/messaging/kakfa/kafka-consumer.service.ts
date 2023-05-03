@@ -1,5 +1,6 @@
 import { Injectable, OnModuleDestroy } from '@nestjs/common'
 import { ServerKafka } from '@nestjs/microservices'
+import { kafkaConfig } from './kafka.client'
 
 @Injectable()
 export class KafkaConsumerervice
@@ -8,15 +9,14 @@ export class KafkaConsumerervice
 {
   constructor() {
     super({
-      client: {
-        clientId: 'dgc-video-manager',
-        brokers: [process.env.KAFKA_BROKER || ''],
-        sasl: {
-          mechanism: 'scram-sha-256',
-          username: process.env.KAFKA_USER || '',
-          password: process.env.KAFKA_PASS || '',
-        },
-        ssl: true,
+      client: kafkaConfig,
+      consumer: {
+        groupId: 'dgc-examples-consumer',
+        retry: {
+          retries: 1,
+          initialRetryTime: 5000,
+          restartOnFailure: (e) => Promise.resolve(true),
+        }
       },
     })
   }

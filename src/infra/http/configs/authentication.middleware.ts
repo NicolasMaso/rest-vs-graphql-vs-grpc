@@ -6,10 +6,11 @@ import { verify, VerifyErrors } from 'jsonwebtoken'
 export class AuthenticationMiddleware implements NestMiddleware {
   use(req: Request, res: Response, next: NextFunction) {
     if (req.method === 'OPTIONS') { return next() }
-    const isPublicRequest = req.headers['x-forwarded-prefix'] === '/video-manager-public'
+    const isPublicRequest = req.headers['x-forwarded-prefix'] === '/example-public'
+    const isTestRequest = req.originalUrl.startsWith('/tests')
     const authorization = req.body.token || req.params.token || req.headers['x-access-token'] || req.headers.authorization
     const token = authorization?.replace('Bearer ', '') || null
-    if (isPublicRequest) { return next() }
+    if (isPublicRequest || isTestRequest) { return next() }
     return verify(token, 'seventh2017', async (err: VerifyErrors, decoded: any) => {
       if (err) {
         const isExpired = err.message === 'jwt expired'

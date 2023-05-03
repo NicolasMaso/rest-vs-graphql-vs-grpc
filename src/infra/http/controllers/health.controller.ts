@@ -5,7 +5,7 @@ export class HealthController {
   @Get()
   async handler(): Promise<any> {
     return {
-      message: `DGC Video Manager running in environment ${process.env.ENV_MODE}`
+      message: `DGC Example running in environment ${process.env.ENV_MODE}`
     }
   }
 }

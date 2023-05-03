@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common'
-import { CameraModule } from '../modules/camera.module'
+import { ExampleModule } from '../modules/example.module'
 import { KafkaConsumerervice } from './kakfa/kafka-consumer.service'
 
 @Module({
-  imports: [CameraModule],
+  imports: [ExampleModule],
   providers: [KafkaConsumerervice],
 })
 export class MessagingModule {}

@@ -31,8 +31,8 @@ async function setupQueue(app: INestApplication) {
 
 async function setupSwagger(app: INestApplication) {
   const config = new DocumentBuilder()
-    .setTitle('DGC Video Manager')
-    .setDescription('Serviço responsável pelo gerenciamento do core do Dguardcloud, câmeras e servidores')
+    .setTitle('DGC Example')
+    .setDescription('Serviço responsável pelo ________ do Dguardcloud')
     .setVersion('1.0')
     .build()
   const document = SwaggerModule.createDocument(app, config)
