@@ -1,7 +1,7 @@
 import { INestApplication, ValidationPipe, VersioningType } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import { MicroserviceOptions } from '@nestjs/microservices'
-import { KafkaConsumerervice } from './infra/messaging/kakfa/kafka-consumer.service'
+import { KafkaConsumerService } from './infra/messaging/kakfa/kafka-consumer.service'
 import { AppModule } from './app.module'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 
@@ -21,7 +21,7 @@ async function bootstrap() {
 bootstrap()
 
 async function setupQueue(app: INestApplication) {
-  const kafkaConsumerService = app.get(KafkaConsumerervice)
+  const kafkaConsumerService = app.get(KafkaConsumerService)
   app.useGlobalPipes(new ValidationPipe())
   app.connectMicroservice<MicroserviceOptions>({
     strategy: kafkaConsumerService,
@@ -32,7 +32,7 @@ async function setupQueue(app: INestApplication) {
 async function setupSwagger(app: INestApplication) {
   const config = new DocumentBuilder()
     .setTitle('DGC Example')
-    .setDescription('Servi√ßo respons√°vel pelo ________ do Dguardcloud')
+    .setDescription('Serviáo respons†vel pelo ________ do Dguardcloud')
     .setVersion('1.0')
     .build()
   const document = SwaggerModule.createDocument(app, config)
