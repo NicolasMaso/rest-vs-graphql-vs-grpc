@@ -3,7 +3,7 @@ import { ServerKafka } from '@nestjs/microservices'
 import { kafkaConfig } from './kafka.client'
 
 @Injectable()
-export class KafkaConsumerervice
+export class KafkaConsumerService
   extends ServerKafka
   implements OnModuleDestroy
 {
