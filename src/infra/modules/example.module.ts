@@ -1,40 +1,44 @@
-import { Module } from '@nestjs/common'
+import { CacheModule, Module } from '@nestjs/common'
+import { ConfigModule } from '@nestjs/config'
+import { ServeStaticModule } from '@nestjs/serve-static'
+import { ScheduleModule } from '@nestjs/schedule'
+import { redisStore } from 'cache-manager-redis-yet'
+import { join } from 'path'
 import { DatabaseModule } from '../database/database.module'
+import { RedisCacheService } from '../../adapter/gateway/redis-cache.service'
 import { examplesProviders, MongooseExamplesRepository } from '../../adapter/repository/database/mongoose-examples.repository'
 import { ExamplesHTTPController } from '../http/controllers/example.controller'
 import { AddExample } from '../../domain/usecase/add-example'
 import { ExamplesMessagingController } from '../messaging/kakfa/controllers/example.controller'
-import { KafkaProducerService } from '../messaging/kakfa/kafka-producer.service'
-import { ClientsModule, Transport } from '@nestjs/microservices'
-import { kafkaConfig } from '../messaging/kakfa/kafka.client'
+import { HttpModule } from '../http/http.module'
+import { MessagingModule } from '../messaging/messaging.module'
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
+    ScheduleModule.forRoot(),
     DatabaseModule,
-    ClientsModule.register([
-      {
-        name: 'KAFKA_PRODUCER',
-        transport: Transport.KAFKA,
-        options: {
-          client: kafkaConfig,
-          producerOnlyMode: true,
-          consumer: {
-            groupId: 'dgc-examples-consumer',
-          },
-          producer: {
-            retry: {
-              retries: 1,
-              initialRetryTime: 5000,
-              restartOnFailure: (e) => Promise.resolve(true)
-            }
-          }
-        },
-      },
-    ]),
+    HttpModule,
+    MessagingModule,
+    CacheModule.registerAsync({
+      useFactory: async () => ({
+        store: await redisStore({
+          url: process.env.REDIS_CACHE || '',
+        }),
+      }),
+    }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'coverage', 'lcov-report'),
+      renderPath: '/tests'
+    }),
   ],
   controllers: [ExamplesHTTPController, ExamplesMessagingController],
   providers: [
-    KafkaProducerService,
+    RedisCacheService,
+    {
+      provide: 'CacheGateway',
+      useExisting: RedisCacheService,
+    },
     MongooseExamplesRepository,
     ...examplesProviders,
     {

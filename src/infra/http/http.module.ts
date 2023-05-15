@@ -1,12 +1,11 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common'
 import { APP_GUARD } from '@nestjs/core'
-import { ExampleModule } from '../modules/example.module'
 import { HealthController } from './controllers/health.controller'
 import { AuthenticationMiddleware } from './configs/authentication.middleware'
 import { PermissionsGuard } from './configs/permissions.guard'
 
 @Module({
-  imports: [ExampleModule],
+  imports: [],
   controllers: [HealthController],
   providers: [
     {

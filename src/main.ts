@@ -1,18 +1,18 @@
 import { INestApplication, ValidationPipe, VersioningType } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
-import { MicroserviceOptions } from '@nestjs/microservices'
-import { KafkaConsumerService } from './infra/messaging/kakfa/kafka-consumer.service'
-import { AppModule } from './app.module'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
+import { MicroserviceOptions } from '@nestjs/microservices'
+import { KafkaQueueService } from './adapter/gateway/kafka-queue.service'
+import { ExampleModule } from './infra/modules/example.module'
 
 async function bootstrap() {
-  const port = process.env.PORT || 7000
-  const app = await NestFactory.create(AppModule, {
+  const port = process.env.PORT || 4220
+  const app = await NestFactory.create(ExampleModule, {
     logger: ['error', 'warn'],
     cors: { origin: '*', allowedHeaders: '*' },
   })
   app.enableVersioning({ type: VersioningType.URI })
-  await setupQueue(app)
+  await setupMicroservices(app)
   await setupSwagger(app)
   await app.listen(port, () => {
     console.log(`Server listening on port ${port} in env ${process.env.ENV_MODE}`)
@@ -20,8 +20,8 @@ async function bootstrap() {
 }
 bootstrap()
 
-async function setupQueue(app: INestApplication) {
-  const kafkaConsumerService = app.get(KafkaConsumerService)
+async function setupMicroservices(app: INestApplication) {
+  const kafkaConsumerService = app.get(KafkaQueueService)
   app.useGlobalPipes(new ValidationPipe())
   app.connectMicroservice<MicroserviceOptions>({
     strategy: kafkaConsumerService,
@@ -32,7 +32,7 @@ async function setupQueue(app: INestApplication) {
 async function setupSwagger(app: INestApplication) {
   const config = new DocumentBuilder()
     .setTitle('DGC Example')
-    .setDescription('Serviáo respons†vel pelo ________ do Dguardcloud')
+    .setDescription('Servi√ßo respons√°vel pelo ________ do Dguardcloud')
     .setVersion('1.0')
     .build()
   const document = SwaggerModule.createDocument(app, config)
