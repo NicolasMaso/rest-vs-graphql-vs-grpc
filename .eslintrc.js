@@ -8,6 +8,7 @@ module.exports = {
   plugins: ['@typescript-eslint/eslint-plugin'],
   extends: [
     'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended',
   ],
   root: true,
   env: {
@@ -25,16 +26,16 @@ module.exports = {
       2
     ],
     "linebreak-style": [
-        "error",
-        "unix"
+      "error",
+      "unix"
     ],
     "quotes": [
-        "error",
-        "single"
+      "error",
+      "single"
     ],
     "semi": [
-        "error",
-        "never"
-    ]
+      "error",
+      "never"
+    ],
   },
 };
