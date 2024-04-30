@@ -1,5 +1,5 @@
-import { ListMovies } from './../../../../application/usecase/movies/list-movies';
-import { Controller, Get, HttpStatus, Res, Version } from '@nestjs/common'
+import { ListMovies } from './../../../../application/usecase/movies/list-movies.js';
+import { Controller, Get, HttpStatus, ParseIntPipe, Query, Res, Version } from '@nestjs/common'
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger'
 import { Response } from 'express';
 
@@ -16,8 +16,8 @@ export class RestListMoviesController {
   })
   @Version('1')
   @Get()
-  async handle(@Res() res: Response): Promise<Response> {
-    const result = await this.listMovies.execute()
+  async handle(@Res() res: Response, @Query('limit', ParseIntPipe) limit: number): Promise<Response> {
+    const result = await this.listMovies.execute(limit)
     return res.status(HttpStatus.OK).json(result);
   }
 }

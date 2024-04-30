@@ -8,7 +8,7 @@ export type MoviesDocument = HydratedDocument<MoviesModel>;
 export class MoviesModel {
   @ApiProperty()
   @Prop({ isRequired: true })
-  id: Number
+  id: number
 
   @ApiProperty()
   @Prop({ isRequired: true })
@@ -16,7 +16,7 @@ export class MoviesModel {
 
   @ApiProperty()
   @Prop({ isRequired: true })
-  date: Number
+  date: number
 
   @ApiProperty()
   @Prop({ isRequired: true })
@@ -28,11 +28,11 @@ export class MoviesModel {
 
   @ApiProperty()
   @Prop({ isRequired: true })
-  minute: Number
+  minute: number
 
   @ApiProperty()
   @Prop({ isRequired: true })
-  rating: Number
+  rating: number
 }
 
 export const MoviesSchema = SchemaFactory.createForClass(MoviesModel)

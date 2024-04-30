@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "Node16",
     "declaration": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,
@@ -21,6 +21,9 @@
       "src/@types",
       "node_modules/@types"
     ],
+  },
+  "watchOptions": {
+    "watchFile": "fixedPollingInterval"
   },
   "include": ["src"],
   "exclude": [

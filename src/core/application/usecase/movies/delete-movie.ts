@@ -1,15 +1,14 @@
 import { Injectable, Inject } from '@nestjs/common'
 import { MoviesRepository } from '../../repository/movies.repository.js'
-import { Movie } from '../../../../core/domain/entity/movie.js'
 
 @Injectable()
-export class ListMovies {
+export class DeleteMovie {
   constructor(
     @Inject('MoviesRepository')
     private moviesRepository: MoviesRepository
   ) {}
 
-  async execute(limit: number): Promise<Movie[]> {
-    return this.moviesRepository.find(limit)
+  async execute(movie_id: number): Promise<String> {
+    return this.moviesRepository.delete(movie_id)
   }
 }

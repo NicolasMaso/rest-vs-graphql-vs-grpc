@@ -1,7 +1,7 @@
-import { INestApplication, ValidationPipe, VersioningType } from '@nestjs/common'
+import { INestApplication, ValidationPipe } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
-import { AppModule } from './modules/app.module'
+import { AppModule } from './modules/app.module.js'
 
 async function bootstrap() {
   const port = process.env.PORT || 3000

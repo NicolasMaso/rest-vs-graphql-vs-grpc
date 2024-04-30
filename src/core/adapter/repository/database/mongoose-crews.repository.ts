@@ -1,8 +1,8 @@
 import { Model } from 'mongoose'
 import { Injectable } from '@nestjs/common'
-import { CrewsModel } from '../../../infra/database/mongoose/schemas/crews.schema'
+import { CrewsModel } from '../../../infra/database/mongoose/schemas/crews.schema.js'
 import { InjectModel } from '@nestjs/mongoose'
-import { CrewsRepository } from '../../../../core/application/repository/crews.repository'
+import { CrewsRepository } from '../../../../core/application/repository/crews.repository.js'
 
 
 @Injectable()

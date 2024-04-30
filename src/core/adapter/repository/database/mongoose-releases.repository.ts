@@ -1,7 +1,7 @@
 import { Model } from 'mongoose'
 import { Injectable } from '@nestjs/common'
-import { ReleasesModel } from '../../../infra/database/mongoose/schemas/releases.schema'
-import { ReleasesRepository } from '../../../../core/application/repository/releases.repository'
+import { ReleasesModel } from '../../../infra/database/mongoose/schemas/releases.schema.js'
+import { ReleasesRepository } from '../../../../core/application/repository/releases.repository.js'
 import { InjectModel } from '@nestjs/mongoose'
 
 

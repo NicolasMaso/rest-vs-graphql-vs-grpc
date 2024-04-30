@@ -1,13 +1,11 @@
-import { DatabaseModule } from './../core/infra/database/database.module';
-import { MoviesModule } from './movies.module';
+import { DatabaseModule } from './../core/infra/database/database.module.js';
+import { MoviesModule } from './movies.module.js';
 import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
-import { ServeStaticModule } from '@nestjs/serve-static'
 import { ScheduleModule } from '@nestjs/schedule'
-import { join } from 'path'
 import { GraphQLModule } from '@nestjs/graphql';
-import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default'
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
+import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 
 @Module({
   imports: [
@@ -15,16 +13,12 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
     ScheduleModule.forRoot(),
     DatabaseModule,
     MoviesModule,
-    ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'coverage', 'lcov-report'),
-      renderPath: '/tests'
-    }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: '../core/infra/graphql/schema.gql',
       playground: false,
       introspection: true,
-      plugins: [ApolloServerPluginLandingPageLocalDefault()]
+      plugins: [ApolloServerPluginLandingPageLocalDefault() as any]
     }),
   ],
   controllers: [],

@@ -1,27 +1,25 @@
-import { ListMovies } from './../../../../application/usecase/movies/list-movies';
-import { Field, ObjectType, Query, Resolver } from '@nestjs/graphql'
+import { ListMovies } from './../../../../application/usecase/movies/list-movies.js';
+import { Args, Query, Resolver } from '@nestjs/graphql'
 import { GraphQLError } from 'graphql'
-
-@ObjectType({ description: '' })
-class Test {
-  @Field((type) => String, { description: '' })
-  name: string
-}
+import { ListMoviesOutput } from '../../../../dto/movies.dto.js';
+import { ParseIntPipe } from '@nestjs/common';
 
 @Resolver(() => Object)
 export class GraphqlListMoviesResolver {
   constructor(private readonly listMovies: ListMovies) {}
 
-  @Query(() => Test, { name: 'list_movies', nullable: true })
-  async handle() {
-    const result = await this.listMovies.execute()
-    if (!result.ok) {
-      throw new GraphQLError(result.reason, {
+  @Query(() => ListMoviesOutput, { name: 'list_movies', nullable: true })
+  async handle(
+    @Args('limit', ParseIntPipe) limit: number
+  ) {
+    try {
+      return this.listMovies.execute(limit)
+    } catch (error) {
+      throw new GraphQLError('Erro desconhecido', {
         extensions: {
-          code: result.code
+          code: 500
         }
       })
     }
-    return result
   }
 }

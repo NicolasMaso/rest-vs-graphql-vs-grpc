@@ -1,13 +1,13 @@
 import { Global, Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { ActorsModel, ActorsSchema } from './mongoose/schemas/actors.schema';
-import { MoviesModel, MoviesSchema } from './mongoose/schemas/movies.schema';
-import { ReleasesModel, ReleasesSchema } from './mongoose/schemas/releases.schema';
-import { CrewsModel, CrewsSchema } from './mongoose/schemas/crews.schema';
-import { MongooseActorsRepository } from '../../adapter/repository/database/mongoose-actors.repository';
-import { MongooseMoviesRepository } from '../../adapter/repository/database/mongoose-movies.repository';
-import { MongooseReleasesRepository } from '../../adapter/repository/database/mongoose-releases.repository';
-import { MongooseCrewsRepository } from '../../adapter/repository/database/mongoose-crews.repository';
+import { ActorsModel, ActorsSchema } from './mongoose/schemas/actors.schema.js';
+import { MoviesModel, MoviesSchema } from './mongoose/schemas/movies.schema.js';
+import { ReleasesModel, ReleasesSchema } from './mongoose/schemas/releases.schema.js';
+import { CrewsModel, CrewsSchema } from './mongoose/schemas/crews.schema.js';
+import { MongooseActorsRepository } from '../../adapter/repository/database/mongoose-actors.repository.js';
+import { MongooseMoviesRepository } from '../../adapter/repository/database/mongoose-movies.repository.js';
+import { MongooseReleasesRepository } from '../../adapter/repository/database/mongoose-releases.repository.js';
+import { MongooseCrewsRepository } from '../../adapter/repository/database/mongoose-crews.repository.js';
 
 @Global()
 @Module({
