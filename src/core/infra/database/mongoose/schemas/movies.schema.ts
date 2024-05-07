@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
 import { ApiProperty } from '@nestjs/swagger'
 import { HydratedDocument } from 'mongoose'
+import { ObjectId } from 'mongodb'
 
 export type MoviesDocument = HydratedDocument<MoviesModel>;
 

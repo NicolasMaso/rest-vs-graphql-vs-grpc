@@ -19,6 +19,6 @@ export class RestAddMovieController {
   @Post()
   async handle(@Res() res: Response, @Body() movie_input: MovieInput): Promise<Response> {
     const result = await this.addMovie.execute(movie_input)
-    return res.status(HttpStatus.OK).json(result);
+    return res.status(HttpStatus.CREATED).json(result);
   }
 }

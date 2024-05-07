@@ -24,10 +24,10 @@ export class Movie {
     this.id = movie_props.id
     this.name = movie_props.name
     this.date = movie_props.date
-    this.tagline = movie_props.tagline
-    this.description = movie_props.description
-    this.minute = movie_props.minute
-    this.rating = movie_props.rating
+    this.tagline = movie_props.tagline || ''
+    this.description = movie_props.description|| ''
+    this.minute = movie_props.minute || 0
+    this.rating = movie_props.rating || 0
   }
 
   static create(movie_input: MovieInput): Movie {

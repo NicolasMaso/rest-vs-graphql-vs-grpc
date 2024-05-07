@@ -12,7 +12,6 @@ export class AddMovie {
 
   async execute(movie_input: MovieInput): Promise<Movie> {
     const movie = Movie.create(movie_input)
-    console.log('🚀 ~ AddMovie ~ execute ~ movie:', movie)
     const result = await this.moviesRepository.create(movie)
     return result
   }

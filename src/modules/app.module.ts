@@ -6,6 +6,9 @@ import { ScheduleModule } from '@nestjs/schedule'
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
+import { ActorsModule } from './actors.module.js';
+import { CrewsModule } from './crews.module.js';
+import { ReleasesModule } from './releases.module.js';
 
 @Module({
   imports: [
@@ -13,6 +16,9 @@ import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin
     ScheduleModule.forRoot(),
     DatabaseModule,
     MoviesModule,
+    ActorsModule,
+    CrewsModule,
+    ReleasesModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: '../core/infra/graphql/schema.gql',

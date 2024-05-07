@@ -1,9 +1,9 @@
+import { Movie } from './../../../domain/entity/movie.js';
 import { Model } from 'mongoose'
 import { Injectable } from '@nestjs/common'
 import { MoviesModel } from '../../../infra/database/mongoose/schemas/movies.schema.js'
 import { MoviesRepository } from '../../../../core/application/repository/movies.repository.js'
 import { InjectModel } from '@nestjs/mongoose'
-import { Movie } from 'src/core/domain/entity/movie.js'
 import { MovieMappers } from '../mappers/movie-mappers.js'
 
 
