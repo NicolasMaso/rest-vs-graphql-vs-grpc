@@ -3,7 +3,8 @@ import { ApiProperty } from "@nestjs/swagger";
 import {
   IsString,
   IsNumber,
-  IsOptional
+  IsOptional,
+  IsDate
 } from 'class-validator'
 
 @InputType({ description: 'Modelo de dados para adicionar um lançamento de um filme' })
@@ -19,7 +20,6 @@ export class ReleaseInput {
   country: string
 
   @ApiProperty({ description: 'Data', required: true })
-  @IsString({ message: 'Data é obrigatório'})
   @Field((type) => Date, { description: 'Data', nullable: true })
   date: Date
 

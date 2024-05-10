@@ -2,9 +2,8 @@ import { Release } from "../../../domain/entity/release.js"
 import { ReleasesModel } from "../../../infra/database/mongoose/schemas/releases.schema.js"
 
 export class ReleaseMappers {
-  static toMongo(release: Release): ReleasesModel {
+  static toMongo(release: Release): any {
     return {
-      _id: release.id,
       id: release.data.movie_id,
       country: release.data.country,
       date: release.data.date,
@@ -15,7 +14,6 @@ export class ReleaseMappers {
 
   static toDomain(raw: ReleasesModel): Release {
     return new Release({
-      _id: raw._id,
       movie_id: raw.id,
       country: raw.country,
       date: raw.date,

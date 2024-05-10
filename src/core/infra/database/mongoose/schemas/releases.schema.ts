@@ -1,7 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
 import { ApiProperty } from '@nestjs/swagger'
 import { HydratedDocument } from 'mongoose'
-import { ObjectId } from 'mongodb'
 
 export type ReleasesDocument = HydratedDocument<ReleasesModel>;
 
@@ -9,7 +8,7 @@ export type ReleasesDocument = HydratedDocument<ReleasesModel>;
 export class ReleasesModel {
   @ApiProperty()
   @Prop({ isRequired: true })
-  _id: ObjectId
+  release_id: number
 
   @ApiProperty()
   @Prop({ isRequired: true })

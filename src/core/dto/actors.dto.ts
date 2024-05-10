@@ -6,7 +6,7 @@ import {
 } from 'class-validator'
 
 @InputType({ description: 'Modelo de dados para adicionar um ator de um filme' })
-export class ActorInput {
+export class  ActorInput {
   @ApiProperty({ description: 'Identificador do filme', required: true })
   @IsNumber({}, { message: 'Identificador do filme é obrigatório'})
   @Field((type) => Int, { description: 'Identificador do filme', nullable: false })
