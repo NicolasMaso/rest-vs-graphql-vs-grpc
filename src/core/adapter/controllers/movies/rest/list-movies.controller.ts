@@ -17,6 +17,7 @@ export class RestListMoviesController {
   @Version('1')
   @Get()
   async handle(@Res() res: Response, @Query('limit', ParseIntPipe) limit: number): Promise<Response> {
+    console.log('🚀 ~ RestListMoviesController ~ handle ~ limit:', limit)
     const result = await this.listMovies.execute(limit)
     return res.status(HttpStatus.OK).json(result);
   }

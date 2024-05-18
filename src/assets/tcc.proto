@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package tcc;
+
+service TccService {
+  rpc listMovies (ListMoviesParam) returns (ListMoviesOutput) {}
+}
+
+message ListMoviesParam {
+  int64 limit = 1;
+}
+
+message MovieOutput {
+  int64 id = 1;
+  string name = 2;
+  int32 date = 3;
+  string tagline = 4;
+  string description = 5;
+  int32 minute = 6;
+  float rating = 7;
+}
+
+message ListMoviesOutput {
+  repeated MovieOutput movies = 1;
+}

@@ -12,6 +12,7 @@ export class GraphqlListMoviesResolver {
   async handle(
     @Args('limit', ParseIntPipe) limit: number
   ) {
+    console.log('🚀 ~ GraphqlListMoviesResolver ~ limit:', limit)
     try {
       return this.listMovies.execute(limit)
     } catch (error) {
