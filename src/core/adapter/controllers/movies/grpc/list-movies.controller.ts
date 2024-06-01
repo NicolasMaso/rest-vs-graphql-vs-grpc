@@ -14,7 +14,7 @@ export class GrpcListMoviesController {
     call: ServerUnaryCall<any, any>
   ): Promise<any> {
     console.log(data)
-    const result = await this.listMovies.execute(data.limit)
+    const result = await this.listMovies.execute(Number(data.limit))
     return { movies: result }
   }
 }
