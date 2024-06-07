@@ -3,14 +3,34 @@ syntax = "proto3";
 package tcc;
 
 service TccService {
-  rpc listMovies (ListMoviesParam) returns (ListMoviesOutput) {}
+  rpc listMovies (ListMoviesInput) returns (ListMoviesOutput) {}
+  rpc addMovie(AddMovieInput) returns (Movie) {}
+  rpc editMovie(Movie) returns (Movie) {}
+  rpc deleteMovie(DeleteMovieInput) returns (DeleteMovieOutput) {}
 }
 
-message ListMoviesParam {
+message ListMoviesInput {
   int64 limit = 1;
 }
 
-message MovieOutput {
+message DeleteMovieInput {
+  int64 id = 1;
+}
+
+message DeleteMovieOutput {
+  string message = 1;
+}
+
+message AddMovieInput {
+  string name = 1;
+  int32 date = 2;
+  string tagline = 3;
+  string description = 4;
+  int32 minute = 5;
+  float rating = 6;
+}
+
+message Movie {
   int64 id = 1;
   string name = 2;
   int32 date = 3;
@@ -21,5 +41,5 @@ message MovieOutput {
 }
 
 message ListMoviesOutput {
-  repeated MovieOutput movies = 1;
+  repeated Movie movies = 1;
 }

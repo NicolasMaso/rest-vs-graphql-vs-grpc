@@ -7,9 +7,9 @@ export const options = {
 };
 
 export default function () {
-  const query = `   
-    query test {
-      list_movies(limit: 1000) {
+  const mutation = `
+    mutation add_movie {
+      add_movie(movie_input:{ name:"Novo Filme GraphQL", date: 2024, tagline: "Slogan Teste GraphQL", description: "Novo Filme GraphQL", minute: 120, rating: 5}) {
         id
         name
         date
@@ -22,9 +22,9 @@ export default function () {
   const headers = {
     'Content-Type': 'application/json',
   };
-  const res = http.post(
-    "http://localhost:3000/graphql",
-    JSON.stringify({ query: query }), { headers }
-  );
+  const res = http.post("http://localhost:3000/graphql", JSON.stringify({ query: mutation }), {
+    headers
+  });
   check(res, { 'success': (r) => r.status === 200 })
 }
+ 

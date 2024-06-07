@@ -17,6 +17,7 @@ export class RestDeleteMovieController {
   @Version('1')
   @Delete('/:id')
   async handle(@Res() res: Response, @Param('id', ParseIntPipe) movie_id: number): Promise<Response> {
+    console.log('🚀 ~ RestDeleteMovieController ~ handle ~ movie_id:', movie_id)
     const result = await this.deleteMovie.execute(movie_id)
     return res.status(HttpStatus.OK).json(result);
   }

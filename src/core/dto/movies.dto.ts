@@ -14,7 +14,7 @@ export class MovieInput {
   name: string
 
   @ApiProperty({ description: 'Ano de lançamento', required: true })
-  @IsString({ message: 'Ano de lançamento é obrigatório'})
+  @IsNumber()
   @Field((type) => Int, { description: 'Ano de lançamento' })
   date: number
 
@@ -29,7 +29,7 @@ export class MovieInput {
   description: string
 
   @ApiProperty({ description: 'Tempo de duração em minutos', required: true })
-  @IsString({ message: 'Tempo de duração é obrigatório'})
+  @IsNumber()
   @Field((type) => Int, { description: 'Tempo de duração em minutos', defaultValue: 0 })
   minute: number
 
@@ -41,7 +41,7 @@ export class MovieInput {
 }
 
 @ObjectType({ description: 'Modelo de dados de retorno um filme' })
-export class MovieOutput {
+export class Movie {
   @ApiProperty({ description: 'Identificador', required: true })
   @Field((type) => Int, { description: 'Identificador', nullable: false })
   id: number
@@ -74,6 +74,6 @@ export class MovieOutput {
 @ObjectType({ description: 'Modelo de dados da listagem de filmes' })
 export class ListMoviesOutput {
   @ApiProperty({ description: 'Lista de filmes', required: true })
-  @Field((type) => [MovieOutput], { description: 'Lista de filmes' })
-  movies: MovieOutput[]
+  @Field((type) => [Movie], { description: 'Lista de filmes' })
+  movies: Movie[]
 }

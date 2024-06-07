@@ -1,3 +1,6 @@
+import { GrpcDeleteMovieController } from './../core/adapter/controllers/movies/grpc/delete-movie.controller.js';
+import { GrpcEditMovieController } from './../core/adapter/controllers/movies/grpc/edit-movie.controller.js';
+import { GrpcAddMovieController } from './../core/adapter/controllers/movies/grpc/add-movie.controller.js';
 import { GrpcListMoviesController } from './../core/adapter/controllers/movies/grpc/list-movies.controller.js';
 import { GraphqlDeleteMovieResolver } from './../core/adapter/controllers/movies/graphql/delete-movie.resolver.js';
 import { GraphqlEditMovieResolver } from './../core/adapter/controllers/movies/graphql/edit-movie.resolver.js';
@@ -17,7 +20,7 @@ import { ListMovies } from './../core/application/usecase/movies/list-movies.js'
 
 @Module({
   imports: [DatabaseModule],
-  controllers: [RestListMoviesController, RestAddMovieController, RestEditMovieController, RestDeleteMovieController, GrpcListMoviesController],
+  controllers: [RestListMoviesController, RestAddMovieController, RestEditMovieController, RestDeleteMovieController, GrpcAddMovieController, GrpcListMoviesController, GrpcEditMovieController, GrpcDeleteMovieController],
   providers: [
     AddMovie,
     EditMovie,

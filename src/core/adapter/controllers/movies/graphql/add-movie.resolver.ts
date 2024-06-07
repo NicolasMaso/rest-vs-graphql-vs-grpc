@@ -1,13 +1,13 @@
 import { AddMovie } from './../../../../application/usecase/movies/add-movie.js';
 import { Args, Mutation, Resolver } from '@nestjs/graphql'
 import { GraphQLError } from 'graphql'
-import { MovieInput, MovieOutput } from '../../../../dto/movies.dto.js';
+import { MovieInput, Movie } from '../../../../dto/movies.dto.js';
 
 @Resolver(() => Object)
 export class GraphqlAddMovieResolver {
   constructor(private readonly addMovie: AddMovie) {}
 
-  @Mutation(() => MovieOutput, { name: 'add_movie' })
+  @Mutation(() => Movie, { name: 'add_movie' })
   async handle(
     @Args('movie_input') movie_input: MovieInput
   ) {

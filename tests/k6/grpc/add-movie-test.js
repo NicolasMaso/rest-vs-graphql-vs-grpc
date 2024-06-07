@@ -11,9 +11,15 @@ client.load(['../../../src/assets'], 'tcc.proto')
 
 export default function () {
   client.connect('localhost:3001', { plaintext: true, maxReceiveSize: 60 * 1024 * 1024 })
-
-  const data = { limit: '1000' }
-  const response = client.invoke('tcc.TccService/listMovies', data)
+  const data = {     
+    name: 'Filme Teste Novo gRPC',
+    date: 2024,
+    tagline: 'Slogan Teste Novo gRPC',
+    description: 'Descrição Teste Novo gRPC',
+    minute: 120,
+    rating: 5 
+  }
+  const response = client.invoke('tcc.TccService/addMovie', data)
   check(response, {
     'status is OK': (r) => r && r.status === grpc.StatusOK
   })
