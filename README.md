@@ -4,12 +4,14 @@
 
 - Essa API foi desenvolvida durante o trabalho de conclusão do curso do aluno Nicolas Nascimento Maso referente ao curso de bacharel em Sistemas de Informação da Universidade Federal de Santa Catarina.
 - A API está configurada para receber solicitações com o padrão REST, GraphQL e também gRPC.
+- O projeto permite uma comparação de desempenho entre REST, GraphQL e gRPC por meio da execução de scripts de testes utilizando a ferramenta Grafana k6.
 - Possui casos de uso relacionados a filmes, atores de um filme, equipes de um filme e lançamentos de um filme.
 
 **EN**
 
 - This API was developed during Nicolas Nascimento Maso's course completion work for the Bachelor's degree in Information Systems at the Federal University of Santa Catarina.
 - The API is configured to receive requests using the REST standard, GraphQL and also gRPC.
+- The project enables a performance comparison between REST, GraphQL and gRPC by running test scripts using the Grafana k6 tool.
 - It has use cases related to movies, movie actors, movie crews and movie releases.
 
 ## Ferramentas necessárias / Tools required
