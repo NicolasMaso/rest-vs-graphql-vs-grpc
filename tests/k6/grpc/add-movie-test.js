@@ -12,9 +12,9 @@ client.load(['../../../src/assets'], 'tcc.proto')
 export default function () {
   client.connect('localhost:3001', { plaintext: true, maxReceiveSize: 60 * 1024 * 1024 })
   const data = {     
-    name: 'Filme Teste Novo gRPC',
+    name: 'Filme Teste Novo gRPCC',
     date: 2024,
-    tagline: 'Slogan Teste Novo gRPC',
+    tagline: 'Slogan Teste Novo gRPCC',
     description: 'Descrição Teste Novo gRPC',
     minute: 120,
     rating: 5 

@@ -1,73 +1,76 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+## Descrição / Description
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+**PT-BR**
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+- Essa API foi desenvolvida durante o trabalho de conclusão do curso do aluno Nicolas Nascimento Maso referente ao curso de bacharel em Sistemas de Informação da Universidade Federal de Santa Catarina.
+- A API está configurada para receber solicitações com o padrão REST, GraphQL e também gRPC.
+- Possui casos de uso relacionados a filmes, atores de um filme, equipes de um filme e lançamentos de um filme.
 
-## Description
+**EN**
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- This API was developed during Nicolas Nascimento Maso's course completion work for the Bachelor's degree in Information Systems at the Federal University of Santa Catarina.
+- The API is configured to receive requests using the REST standard, GraphQL and also gRPC.
+- It has use cases related to movies, movie actors, movie crews and movie releases.
 
-## Installation
+## Ferramentas necessárias / Tools required
+
+- NestJS
+- Node.js
+- MongoDB
+- Grafana k6
+
+## Instalação / Installation
+
+**PT-BR**
+
+- Para instalar as dependências da aplicação basta estar com o [Node.js](https://nodejs.org/en) instalado em sua máquina e executar o comando abaixo.
+
+**EN**
+
+- To install the application's dependencies, simply have [Node.js](https://nodejs.org/en) installed on your machine and run the command below.
+
 
 ```bash
 $ npm install
 ```
 
-## Running the app
+
+## Executando a aplicação / Running the application
+
+**PT-BR**
+
+- Para executar a aplicação é necessário executar o comando abaixo.
+
+**EN**
+
+- To run the application, execute the command below.
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+$ npm run dev
 ```
 
-## Test
+
+## Executando os testes / Running tests
+
+**PT-BR**
+
+- Os scripts dos testes estão armazenados na raiz do projeto dentro da pasta tests > k6, separados por cada padrão (REST, GraphQL e gRPC). Eles podem ser modificados conforme o teste que precisa ser executado, bem como modificação dos parâmetros, dados, etc.
+
+- Para a execução dos testes, é necessário inicialmente a instalação da ferramenta [Grafana k6](https://k6.io/).
+
+- Após a instalação da ferramenta, a aplicação precisa estar em execução e basta executar os testes com o comando da ferramenta k6, conforme exemplo abaixo.
+
+**EN**
+
+- The test scripts are stored in the root of the project in the tests > k6 folder, separated by each standard (REST, GraphQL and gRPC). They can be modified according to the test that needs to be run, as well as changing parameters, data, etc.
+
+- To run the tests, you first need to install the [Grafana k6](https://k6.io/) tool.
+
+- Once the tool has been installed, the application needs to be running and simply execute the tests with the k6 tool command, as shown in the example below.
+
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+$ k6.exe run nome-do-script.js
 ```
 
-## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).

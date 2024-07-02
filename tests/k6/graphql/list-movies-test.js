@@ -9,7 +9,7 @@ export const options = {
 export default function () {
   const query = `   
     query test {
-      list_movies(limit: 1000) {
+      list_movies(limit: 150000) {
         id
         name
         date

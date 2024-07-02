@@ -7,6 +7,6 @@ export const options = {
 };
 
 export default function () {
-  let res = http.get('http://localhost:3000/movies?limit=1000')
+  let res = http.get('http://localhost:3000/movies?limit=150000')
   check(res, { 'success': (r) => r.status === 200 })
 }

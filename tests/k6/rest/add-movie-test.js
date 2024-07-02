@@ -8,10 +8,10 @@ export const options = {
 
 export default function () {
   const body = {
-    name: 'Filme Teste Novo REST',
+    name: 'Filme Teste Novo RESTT',
     date: 2024,
-    tagline: 'Slogan Teste Novo REST',
-    description: 'Descrição Teste Novo REST',
+    tagline: 'Slogan Teste Novo RESTT',
+    description: 'Descrição Teste Novo RESTT',
     minute: 120,
     rating: 5
   }
