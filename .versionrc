@@ -1,0 +1,34 @@
+{
+  "types":[
+    {
+      "type":"enh",
+      "section":"Melhorias"
+    },
+    {
+      "type":"feat",
+      "section":"Funcionalidades"
+    },
+    {
+      "type":"fix",
+      "section":"Correções"
+    },
+    {
+      "type":"docs",
+      "section":"Documentação"
+    },
+    {
+      "type":"test",
+      "section":"Testes"
+    },
+    {
+      "type":"refactor",
+      "section":"Refatoração"
+    },
+    {
+      "type":"perf",
+      "section":"Performance"
+    }
+  ],
+  "commitUrlFormat": "{{host}}/{{owner}}/{{repository}}/commits/{{hash}}",
+  "compareUrlFormat": "{{host}}/{{owner}}/{{repository}}/branches/compare/{{currentTag}}%0D{{previousTag}}"
+}

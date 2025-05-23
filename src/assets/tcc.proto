@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package tcc;
+
+service TccService {
+  rpc listMovies (ListMoviesInput) returns (ListMoviesOutput) {}
+  rpc addMovie(AddMovieInput) returns (Movie) {}
+  rpc editMovie(Movie) returns (Movie) {}
+  rpc deleteMovie(DeleteMovieInput) returns (DeleteMovieOutput) {}
+}
+
+message ListMoviesInput {
+  int64 limit = 1;
+}
+
+message DeleteMovieInput {
+  int64 id = 1;
+}
+
+message DeleteMovieOutput {
+  string message = 1;
+}
+
+message AddMovieInput {
+  string name = 1;
+  int32 date = 2;
+  string tagline = 3;
+  string description = 4;
+  int32 minute = 5;
+  float rating = 6;
+}
+
+message Movie {
+  int64 id = 1;
+  string name = 2;
+  int32 date = 3;
+  string tagline = 4;
+  string description = 5;
+  int32 minute = 6;
+  float rating = 7;
+}
+
+message ListMoviesOutput {
+  repeated Movie movies = 1;
+}
